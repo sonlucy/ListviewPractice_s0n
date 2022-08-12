@@ -20,7 +20,7 @@ class StudentAdapter(
     override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
 
         var tempRow = convertView
-        if (tempRow==null){
+        if (tempRow==null){  //convertView가 null일때만 즉, 필요할때만 inflate하도록해서 재사용성 유지.
             //converView가 비어있었다면, 새로 대입
             tempRow = inf.inflate(R.layout.student_list_item, null)  //null:부가정보는 일단 null로 .
 
@@ -36,9 +36,11 @@ class StudentAdapter(
         nameTxt.text = studentData.name
         //birthYearTxt.text = "(${studentData.birthYear}년생)"
 
-        // 출생년도를 가지고 나이로 변환해서 보여주기. (2022년 기준 한국식 나이로.)
+        /* 출생년도를 가지고 나이로 변환해서 보여주기. (2022년 기준 한국식 나이로.)
         val koreanAge = 2022- studentData.birthYear +1
-        birthYearTxt.text= "(${koreanAge}세)"
+        birthYearTxt.text= "(${koreanAge}세)"*/
+
+        birthYearTxt.text= "(${studentData.getMyNameIn2022()})세"
 
         return row
 
