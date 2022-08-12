@@ -46,10 +46,15 @@ class MainActivity : AppCompatActivity() {
         //길게 누를떄
         studentListView.setOnItemLongClickListener { adapterView, view, position, id ->
 
+            mStudentList.removeAt(position)  //길게 누르면 해당목록 삭제되게.
+            //새로고침 기능. (리스트뷰의 목록 변경을 알려줘야지.)
+            mAdapter.notifyDataSetChanged()
+
+            /*
             val longClikedStudent = mStudentList[position]
 
             Toast.makeText(this, "${longClikedStudent.name} 길게 클릭됨", Toast.LENGTH_SHORT).show()
-
+*/
             return@setOnItemLongClickListener true  //true로 햐면 longclick만 전용실행. 만약 false이면 손 떼는 시점에서 그냥 클릭이벤트도 실행됨.
         }
 
