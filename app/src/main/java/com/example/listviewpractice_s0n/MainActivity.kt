@@ -2,6 +2,7 @@ package com.example.listviewpractice_s0n
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
 import com.example.listviewpractice_s0n.adapters.StudentAdapter
 import com.example.listviewpractice_s0n.datas.Student
 import kotlinx.android.synthetic.main.activity_main.*
@@ -31,5 +32,16 @@ class MainActivity : AppCompatActivity() {
         mAdapter = StudentAdapter(mContext = this, R.layout.student_list_item, mStudentList)
 
         studentListView.adapter = mAdapter
+
+
+        studentListView.setOnItemClickListener { adapterView, view, position, id ->
+
+            //눌린 사람의 이름을 토스트로 알리기
+            val clickedStudent = mStudentList[position]  //클릭된 학생을 꺼내주고
+            Toast.makeText(this, "${clickedStudent.name}이 클릭됨", Toast.LENGTH_SHORT).show()
+
+        }
+
+
     }
 }
