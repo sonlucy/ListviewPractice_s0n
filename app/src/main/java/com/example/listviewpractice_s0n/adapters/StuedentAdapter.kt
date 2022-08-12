@@ -8,7 +8,7 @@ import android.widget.ArrayAdapter
 import com.example.listviewpractice_s0n.R
 import com.example.listviewpractice_s0n.datas.Student
 
-class StuedentAdapter(
+class StudentAdapter(
     val mContext: Context,
     val resId: Int,       //ArrayList<뿌려줄 데이터 클래스>
     val mList : ArrayList<Student>) : ArrayAdapter<Student>(mContext, resId, mList) {

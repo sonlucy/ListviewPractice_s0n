@@ -2,11 +2,15 @@ package com.example.listviewpractice_s0n
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.example.listviewpractice_s0n.adapters.StudentAdapter
 import com.example.listviewpractice_s0n.datas.Student
+import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
 
     val mStudentList = ArrayList<Student>()
+
+    lateinit var mAdapter : StudentAdapter //나중에 변수를 채워넣을거야. StudentAdapter 모양으로.
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -23,5 +27,9 @@ class MainActivity : AppCompatActivity() {
         mStudentList.add(Student("백지현", 2002))
         mStudentList.add(Student("최정인", 2001))
 
+        //이제 변수 넣어줌. StudentAdapter(어떤 화면에서 보고잇는가용, 이 목록 모양에 맞게 뿌려주세여, 무슨 목록 뿌리려고하낭)
+        mAdapter = StudentAdapter(mContext = this, R.layout.student_list_item, mStudentList)
+
+        studentListView.adapter = mAdapter
     }
 }
